@@ -1,9 +1,9 @@
-#installation
+# installation
 
 * virtualenv -p python3 venv
 * pip install -r requirements.txt
 
-#usage
+# usage
 
 * source venv/bin/activate
 * python bot.py [username] [password]
