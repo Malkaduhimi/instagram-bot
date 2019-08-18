@@ -1,4 +1,4 @@
-from util import Authentication
+from .util import Authentication
 import time
 
 class Tag:

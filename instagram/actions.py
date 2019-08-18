@@ -3,16 +3,16 @@ class MediaInteraction:
         self.instagram_api = instagram_api
     
     def like(self, media_id):
-        self.instagram_api.like(self, mediaId)
+        self.instagram_api.like(media_id)
 
     def unlike(self, media_id):
-        self.instagram_api.unlike(self, mediaId)
+        self.instagram_api.unlike(media_id)
 
     def comment(self, media_id, comment):
-        self.instagram_api.comment(self, mediaId, comment)
+        self.instagram_api.comment(media_id, comment)
 
     def get_likers(self, media_id):
-        self.instagram_api.getMediaLikers(self, mediaId)
+        self.instagram_api.getMediaLikers(media_id)
 
 class PersonalInteraction:
     def __init__(self, instagram_api):

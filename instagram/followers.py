@@ -1,5 +1,5 @@
-from util import Authentication
-from profile import OwnProfile
+from .util import Authentication
+from .profile import OwnProfile
 import time
 
 class Followers:

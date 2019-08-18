@@ -1,4 +1,4 @@
-from util import Authentication
+from .util import Authentication
 import time
 
 class OwnProfile:
@@ -67,7 +67,7 @@ if __name__ == "__main__":
 
     profile = Profile(instagram_api)
     user_id = profile.get_user_id('thewiseminds')
-    print(profile.get_feed(user_id))
+    print(profile.get_data(user_id))
 
     #own_profile = OwnProfile(instagram_api)
     #print(own_profile.get_timeline())
