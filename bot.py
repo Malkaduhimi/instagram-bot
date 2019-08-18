@@ -4,6 +4,7 @@ import sqlite3
 class Bot:
     def __init__(self):
         self.conn = sqlite3.connect('data/db.sqlite')
+        self.cursor = conn.cursor()
         authentication = Authentication()
         self.instagram_api = authentication.login_from_arguments()
         
@@ -16,7 +17,7 @@ class Bot:
         print()
     
     def unfollow_step(self):
-        
+        foreach()
         
 
 if __name__ == "__main__":
