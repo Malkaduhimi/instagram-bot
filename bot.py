@@ -22,15 +22,13 @@ class Bot:
     def start(self):
         while True:
             self.cycle()
-            time.sleep(random.choice(range(120,420)))
+            self.wait(120,420)
         
         self.session.close()
             
     def cycle(self):
         self.unfollow_step()
         self.follow_and_like_step()
-        
-        self.session.commit()
         
     def follow_and_like_step(self):
         print('----------follow and like step')
@@ -54,7 +52,7 @@ class Bot:
             if not tag['has_liked']:
                 print('  * like post {} from user {}'.format(tag['pk'], tag['user']['username']))
                 media.like(tag['pk'])
-                time.sleep(random.choice(range(1,10)))
+                self.wait(1, 6)
             
 
     def unfollow_step(self):
@@ -66,12 +64,16 @@ class Bot:
             print('  * unfollow {}'.format(user.username))
             print('BUUUTTT that\'s not implemented yet')
 
+    def wait(lower_range, upper_range):
+        time.sleep(random.choice(range(lower_range,upper_range)))
+        
     def is_user_followed(self, user_id):
         return self.session.query(User).filter(User.user_id == user_id, User.unfollow_date == None).count() > 0
 
     def save_followed_user(self, user_id, username):
         user = User(username=username, user_id=user_id, follow_date=date.today())
         self.session.add(user)
+        self.session.commit()
 
 if __name__ == "__main__":
     bot = Bot(['coding', 'developer', 'programming', 'developerlife', 'coder', 'python', 'ai', 'softwaredeveloper'])
