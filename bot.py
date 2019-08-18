@@ -64,7 +64,7 @@ class Bot:
             print('  * unfollow {}'.format(user.username))
             print('BUUUTTT that\'s not implemented yet')
 
-    def wait(lower_range, upper_range):
+    def wait(self, lower_range, upper_range):
         time.sleep(random.choice(range(lower_range,upper_range)))
         
     def is_user_followed(self, user_id):
