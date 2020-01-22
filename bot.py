@@ -42,7 +42,7 @@ class Bot:
         nr_liked_in_cycle = 0
         
         for tag in tag_feed:
-            if nr_followed_in_cycle < 2 \
+            if nr_followed_in_cycle < 0 \
                and not tag['user']['friendship_status']['following'] \
                and not self.is_user_followed(tag['user']['pk']):
 
@@ -51,7 +51,7 @@ class Bot:
                 self.save_followed_user(tag['user']['pk'], tag['user']['username'])
                 nr_followed_in_cycle += 1
 
-            if nr_liked_in_cycle < 3 and not tag['has_liked']:
+            if nr_liked_in_cycle < 1 and not tag['has_liked']:
                 print('  * like post {} from user {}'.format(tag['pk'], tag['user']['username']))
                 media.like(tag['pk'])
                 nr_liked_in_cycle += 1
@@ -82,6 +82,7 @@ class Bot:
         (username, password) = authentication.get_arguments()
         seven_days_ago = date.today() - timedelta(days=7)
         account = self.session.query(Account).filter(Account.username == username, Account.login_date > seven_days_ago).first()
+        
         if account is None:
             print('- logging in')
             self.instagram_api = authentication.login(username, password)
