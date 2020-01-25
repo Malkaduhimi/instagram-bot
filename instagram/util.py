@@ -21,7 +21,7 @@ class Authentication:
         instagram_api = InstagramAPI(username, password)
         instagram_api.login()
 
-        if (instagram_api.LastJson.message == 'challenge_required'):
+        if (hasattr(instagram_api.LastJson, 'message') and instagram_api.LastJson['message'] == 'challenge_required'):
             print(instagram_api.LastJson)
             challenge_message = instagram_api.s.get(instagram_api.API_URL + instagram_api.LastJson['challenge']['api_path'][1:])
             print(json.loads(challenge_message.text))
